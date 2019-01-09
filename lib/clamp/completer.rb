@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "clamp/completer/version"
 require 'shellwords'
 
@@ -46,7 +48,7 @@ module Clamp
         end
 
         puts ERB.new(File.read(template_file), nil, '%-').tap { |e| e.location = [template_file, nil] }.result(
-                         OpenStruct.new(progname: File.basename($PROGRAM_NAME), iterator: Iterator.new(wrapper)).instance_eval { binding }
+          OpenStruct.new(progname: File.basename($PROGRAM_NAME), iterator: Iterator.new(wrapper)).instance_eval { binding }
         )
       end
     end
