@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/kontena/clamp-completer.svg?branch=master)](https://travis-ci.org/kontena/clamp-completer)
-[![Gem Version](https://badge.fury.io/rb/clamp-completer)](https://badge.fury.io/rb/clamp-completer)
+[![Gem Version](https://badge.fury.io/rb/clamp-completer.svg)](https://badge.fury.io/rb/clamp-completer)
 
 # Clamp::Completer
 
