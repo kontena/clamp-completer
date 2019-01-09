@@ -1,7 +1,25 @@
----
 sudo: false
 language: ruby
 cache: bundler
 rvm:
-  - 2.5.3
+- '2.3'
+- '2.4'
+- '2.5'
+- '2.6'
+- ruby-head
+matrix:
+  allow_failures:
+  - rvm: ruby-head
+script:
+- bundle install
+- bundle exec rspec spec/
+- bundle exec rubocop --fail-level A -S --format c --parallel
 before_install: gem install bundler -v 1.17.1
+deploy:
+  provider: rubygems
+  gem: clamp-completer
+  on:
+    tags: true
+    rvm: '2.6'
+  api_key:
+    secure: ZYJu7fHSwe/5qX4aOChm2g6o7NxkW24p1juP8WEUT4sVO24fzyPWiCLDixv1SLe7+dncNpP5ubP2lAkecFpmyB9K/h9pj4DTCn1I9cvP3LgpontL0bXNELQt9PXAab2oOtIQMU7CS5WKN1tG+n2ToQ6svtxm2cffIRc146CzZI8xKW5qsA/rSR9JlF4tUv5GWHST5RosRiPg4Yuyrsb+My+j4XJ5jRh0OjbD15VZ/yWj2hTpSt8IGrqmPVxxiamuii84ajymk0yMo1Vc+zFAoHVwzhrEovOc+Dh5b97GEehrlie4bQ4SJY6DMx+/QyTX5cdsL+wNsLRQ3QIZBorYIWTWSlTJsaTm62wEEDy17LOq59h0IuGj6wuKIO5uiI89fme/oUfDbl/cwBK+c+0Z1xjTTM300DBKG6/y+Dk6v+YcSSQaDGkKUMBox7IbaC4LplXmoBwmfj48GiOWeORuSYjzjeKKonI7bPHxS6qjJnAV8Du0C0saDQMoAaH0L3xeJrTLS+pqIAUQAd7zLFiGX3UrYkS8dTjpbOzZwTsAK3jr227Tj2fRxCZyouj3ZYo89saKQGjb0c76MiHV9tBXc6OgcnjC4q0xmjnXR0337Ej/jH/boBhZbhLORNLz1E9hFRsmXUsuiXJQhfU0PTJjuOOpUjsOXLxD/IT2OhV0Q1k=
